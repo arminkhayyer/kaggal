@@ -14,7 +14,7 @@ def cleanedCategoricalWithTooManyOptions(df, column, percentThreshold=.01, highl
 
 def categoricalWithTooManyOptions(df, column, percentThreshold=.01):
     highlyOccuring = set()
-    df[column].fillna('nan', inplace=True)
+    df[column].fillna('nane', inplace=True)
     numEachOption = collections.Counter(df[column])
     percentEachOption = {key: value/len(df[column]) for key, value in numEachOption.items()}
     for key in percentEachOption:
@@ -28,5 +28,5 @@ def cleanOptions(df, column, highlyOccuring):
 def cleanNumericColumn(df, columns, createFlag):
     for column in columns:
         if createFlag:
-            df["%s_isnan"%column] = df[column].isna()
+            df["%s_isnane"%column] = df[column].isna()
         df[column] = df[column].fillna(df[column].mean())
